@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+       function  validateForm(){
+           //Call radio groups
+           var type = document.getElementsByName("progress"),
+           type2 = document.getElementsByName("progress2"), type3 = document.getElementsByName("progress3"),
+           type4 = document.getElementsByName("progress4"), type5 = document.getElementsByName("progress5");
+            //Declare marks variable
+           var FullMark = 5, Zero = 0 ,one = 1, two = 2, three = 3, four = 4;
+
+           
+            //Check if all questions are answerd
+           if(!type[0].checked && !type[1].checked && !type[2].checked){
+               alert("You've missed question 1")
+           }
+           else if(!type2[0].checked && !type2[1].checked && !type2[2].checked){
+               alert("You've missed question 2")
+           }
+           else if(!type3[0].checked && !type3[1].checked && !type3[2].checked){
+               alert("You've missed question 3")
+           }
+           else if(!type4[0].checked && !type4[1].checked && !type4[2].checked){
+               alert("You've missed question 4")
+           }
+           else if(!type5[0].checked && !type5[1].checked && !type5[2].checked){
+               alert("You've missed question 5")
+           }
+
+
+
+           //correct answers full mark
+           if   (  type[1].checked & type2[0].checked & type3[2].checked & type4[1].checked & type5[0].checked
+            ){
+               document.getElementById("sc").innerHTML = "Your mark is: "+FullMark +"/" +FullMark
+           }
+           //all not correct answers zero mark
+           else if (!type[1].checked & !type2[0].checked & !type3[2].checked & !type4[1].checked & !type5[0].checked
+           
+            ){
+               document.getElementById("sc").innerHTML = "Your mark is: "+Zero
+           }
+           //one correct answer
+            if(
+              type[1].checked & !type2[0].checked & !type3[2].checked & !type4[1].checked & !type5[0].checked |
+              !type[1].checked & type2[0].checked & !type3[2].checked & !type4[1].checked & !type5[0].checked |
+              !type[1].checked & !type2[0].checked & type3[2].checked & !type4[1].checked & !type5[0].checked |
+              !type[1].checked & !type2[0].checked & !type3[2].checked & type4[1].checked & !type5[0].checked |
+              !type[1].checked & !type2[0].checked & !type3[2].checked & !type4[1].checked & type5[0].checked
+                ){
+                    document.getElementById("sc").innerHTML = "Your mark is: "+one +"/" +FullMark
+           }
+           //two correct answers
+           else if(
+                  type[1].checked & type2[0].checked & !type3[2].checked & !type4[1].checked & !type5[0].checked | 
+                  type[1].checked & !type2[0].checked & type3[2].checked & !type4[1].checked & !type5[0].checked | 
+                  type[1].checked & !type2[0].checked & !type3[2].checked & type4[1].checked & !type5[0].checked | 
+                  type[1].checked & !type2[0].checked & !type3[2].checked & !type4[1].checked & type5[0].checked | 
+                  !type[1].checked & type2[0].checked & type3[2].checked & !type4[1].checked & !type5[0].checked |
+                  !type[1].checked & type2[0].checked & !type3[2].checked & type4[1].checked & !type5[0].checked |
+                  !type[1].checked & type2[0].checked & !type3[2].checked & !type4[1].checked & type5[0].checked |
+                  !type[1].checked & !type2[0].checked & type3[2].checked & type4[1].checked & !type5[0].checked |
+                  !type[1].checked & !type2[0].checked & type3[2].checked & !type4[1].checked & type5[0].checked |
+                  !type[1].checked & !type2[0].checked & !type3[2].checked & type4[1].checked & type5[0].checked 
+                  
+                ){
+                    document.getElementById("sc").innerHTML = "Your mark is: "+two +"/" +FullMark
+           }
+           //three correct answers
+           if(
+                  type[1].checked & type2[0].checked & type3[2].checked & !type4[1].checked & !type5[0].checked | 
+                  type[1].checked & type2[0].checked & type4[1].checked & !type5[0].checked & !type3[2].checked | 
+                  type[1].checked & type2[1].checked & type5[0].checked & !type4[1].checked & !type3[2].checked | 
+                  type[1].checked & type3[2].checked & type4[1].checked & !type5[0].checked & !type2[0].checked | 
+                  type[1].checked & type4[1].checked & type5[0].checked & !type3[2].checked & !type4[1].checked | 
+                  type2[0].checked & type3[2].checked & type4[2].checked & !type5[0].checked & !type[1].checked |
+                  type2[0].checked & type3[2].checked & type5[0].checked & !type[1].checked & !type4[1].checked | 
+                  type3[2].checked & type4[1].checked & type5[0].checked & !type2[0].checked & !type[1].checked
+                ){
+                    document.getElementById("sc").innerHTML = "Your mark is: "+three +"/" +FullMark
+           }
+           //four correct answers
+           else if(
+            type[1].checked & type2[0].checked & type3[2].checked & type4[1].checked & !type5[0].checked |
+            type[1].checked & type2[0].checked & type3[2].checked & !type4[1].checked & type5[0].checked |
+            type[1].checked & type2[0].checked & !type3[2].checked & type4[1].checked & type5[0].checked |
+            type[1].checked & !type2[0].checked & type3[2].checked & type4[1].checked & type5[0].checked |
+            !type[1].checked & type2[0].checked & type3[2].checked & type4[1].checked & type5[0].checked
+                ){
+                    document.getElementById("sc").innerHTML = "Your mark is: "+four +"/" +FullMark
+           }
+           
+
+       }
+        
+    </script>
+</head>
+<body>
+    <h2>Test Your English</h2><br>
+    <h5>For the questions below, please choose the best option to complete the sentence or conversation</h5><hr><br>
+        
+         <br>
+        
+         <form id="quiz" name="form" class="form">
+            <span class="badge">1</span> <span class="question">Can I park here?</span><br>
+            <div class="inputGroup">
+                <input id="radio1" name="progress" type="radio" class="radio-hide" value="1"/>
+                <label id="label1" for="radio1">Sorry, I did that.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio2" name="progress" type="radio" class="radio-hide" value="1"/>
+                <label for="radio2">it's the same place.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio3" name="progress" type="radio" class="radio-hide" value="1"/>
+                <label for="radio3">Only for half an hour.</label>
+            </div><br><hr><br>
+            
+            <span class="badge">2</span> <span class="question">What color will you paint the children's bedroom?</span><br>
+            <div class="inputGroup">
+                <input id="radio4" name="progress2" type="radio" class="radio-hide" value="1"/>
+                <label for="radio4">I hope it was right.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio5" name="progress2" type="radio" class="radio-hide" value="1"/>
+                <label for="radio5">We can't decide.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio6" name="progress2" type="radio" class="radio-hide" value="1"/>
+                <label for="radio6">It wasn't very difficult.</label>
+            </div><br><hr><br>
+            
+            <span class="badge">3</span> <span class="question">I can't understand this email.</span><br>
+            <div class="inputGroup">
+                <input id="radio7" name="progress3" type="radio" class="radio-hide" value="1"/>
+                <label for="radio7">Would you like some help?</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio8" name="progress3" type="radio" class="radio-hide" value="1"/>
+                <label for="radio8">Don't you know?</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio9" name="progress3" type="radio" class="radio-hide" value="1"/>
+                <label for="radio9">I suppose you can.</label>
+            </div><br><hr><br>
+            
+            <span class="badge">4</span> <span class="question">I'd like two tickets for tomorrow night.</span><br>
+            <div class="inputGroup">
+                <input id="radio10" name="progress4" type="radio" class="radio-hide" value="1"/>
+                <label for="radio10">How much did you pay?</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio11" name="progress4" type="radio" class="radio-hide" value="1"/>
+                <label for="radio11">Afternoon and evening.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio12" name="progress4" type="radio" class="radio-hide" value="1"/>
+                <label for="radio12">I'll just check for you.</label>
+            </div><br><hr><br>
+            
+            <span class="badge">5</span> <span class="question">Shall we go to the gym now?</span><br>
+            <div class="inputGroup">
+                <input id="radio13" name="progress5" type="radio" class="radio-hide" value="1"/>
+                <label for="radio13">I'm too tired.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio14" name="progress5" type="radio" class="radio-hide" value="1"/>
+                <label for="radio14">It's very good.</label>
+            </div>
+
+            <div class="inputGroup">
+                <input id="radio15" name="progress5" type="radio" value="1" class="radio-hide"/>
+                <label class="label-text" for="radio15">Not at all.</label>
+            </div><br>
+        </form>
+            <button id="sub-btn" name="showScore" class="btn btn-dark btn-lg" onclick="validateForm();">Submit</button><br><br> 
+            <p class="score">Total Score: <span id="sc"></span> </p>
+        
+     
+
+
+</body>
+</html>
